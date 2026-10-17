@@ -1,1 +1,58 @@
-[{"amount": 77.0, "description": "Lunch with friends", "location": "Beylikduzu", "category": "Food", "date": "170926"}, {"amount": 85.0, "description": "Taxi ride", "location": "Avcilar", "category": "Transportation", "date": "180926"}, {"amount": 450.0, "description": "New shoes", "location": "Mall of Istanbul", "category": "Shopping", "date": "190926"}, {"amount": 120.0, "description": "Groceries", "location": "Migros", "category": "Food", "date": "200926"}, {"amount": 60.0, "description": "Movie ticket", "location": "Cinemaximum", "category": "Entertainment", "date": "210926"}, {"amount": 888.0, "description": "meggay", "location": "kanada", "category": "klosior", "date": "090923"}]
+[
+    {
+        "amount": 77.0,
+        "description": "Lunch with friends",
+        "location": "Beylikduzu",
+        "category": "Food",
+        "date": "170926"
+    },
+    {
+        "amount": 85.0,
+        "description": "Taxi ride",
+        "location": "Avcilar",
+        "category": "Transportation",
+        "date": "180926"
+    },
+    {
+        "amount": 450.0,
+        "description": "New shoes",
+        "location": "Mall of Istanbul",
+        "category": "Shopping",
+        "date": "190926"
+    },
+    {
+        "amount": 120.0,
+        "description": "Groceries",
+        "location": "Migros",
+        "category": "Food",
+        "date": "200926"
+    },
+    {
+        "amount": 60.0,
+        "description": "Movie ticket",
+        "location": "Cinemaximum",
+        "category": "Entertainment",
+        "date": "210926"
+    },
+    {
+        "amount": 888.0,
+        "description": "meggay",
+        "location": "kanada",
+        "category": "klosior",
+        "date": "090923"
+    },
+    {
+        "amount": 89.0,
+        "description": "party",
+        "location": "marina",
+        "category": "food",
+        "date": "090924"
+    },
+    {
+        "amount": 332.0,
+        "description": "c",
+        "location": "c",
+        "category": "c",
+        "date": "080812"
+    }
+]
