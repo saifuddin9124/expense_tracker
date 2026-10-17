@@ -2,12 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import sqlite3
+import os
+
+# Set absolute path for SQLite database
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "expenses.db")
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key_change_this_later"
 
 def init_db():
-    connection = sqlite3.connect("expenses.db")
+    connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()
     
     # 1. Create Users Table
@@ -19,7 +24,7 @@ def init_db():
         )
     """)
     
-    # 2. Create Expenses Table with user_id
+    # 2. Create Expenses Table with user_id foreign key
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS expenses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,7 +51,7 @@ def register():
         
         hashed_pw = generate_password_hash(password)
         
-        connection = sqlite3.connect('expenses.db')
+        connection = sqlite3.connect(DB_PATH)
         cursor = connection.cursor()
         
         try:
@@ -67,7 +72,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        connection = sqlite3.connect('expenses.db')
+        connection = sqlite3.connect(DB_PATH)
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
         
@@ -93,7 +98,7 @@ def home():
     if 'user_id' not in session:
         return redirect(url_for('login'))
         
-    connection = sqlite3.connect("expenses.db")
+    connection = sqlite3.connect(DB_PATH)
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
     
@@ -135,7 +140,7 @@ def add_expense():
     except ValueError:
         return "Error: Date must be a real date in DDMMYY format (e.g., 261224)!", 400
     
-    connection = sqlite3.connect('expenses.db')
+    connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()
     
     cursor.execute(
@@ -152,7 +157,7 @@ def delete_expense(id):
     if 'user_id' not in session:
         return {"status": "unauthorized"}, 401
 
-    connection = sqlite3.connect("expenses.db")
+    connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()
 
     cursor.execute("DELETE FROM expenses WHERE id = ? AND user_id = ?", (id, session['user_id']))
